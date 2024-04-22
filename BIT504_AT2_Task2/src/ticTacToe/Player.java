@@ -5,5 +5,7 @@ package ticTacToe;
  */
 
 public enum Player {
-	Empty, Cross, Nought
+	Empty, 
+	Cross, 
+	Nought
 }

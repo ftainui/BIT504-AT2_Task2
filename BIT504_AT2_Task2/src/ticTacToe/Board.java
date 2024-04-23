@@ -13,10 +13,10 @@ public class Board {
 	
 	/** Constructor to create the game board */
 	public Board() {
-		// Initialise the cells array using ROWS and COLS constants 
+		// Initialize the cells array using ROWS and COLS constants 
 		cells = new Cell[GameMain.ROWS][GameMain.COLS];
 		
-		// Iterate over each cell and initalise it
+		// Iterate over each cell and entails it
 		for (int row = 0; row < GameMain.ROWS; ++row) {
 			for (int col = 0; col < GameMain.COLS; ++col) {
 				cells[row][col] = new Cell(row, col);
@@ -26,21 +26,19 @@ public class Board {
 	
 	/** Return true if it is a draw (i.e., no more EMPTY cells) */ 
 	public boolean isDraw() {
-		 
 		// Check whether the game has ended in a draw using a nested loop. Check whether any of 
 		// the cells content in the board grid are Player.Empty. If they are, it is not a draw.
-		// Return false if it is not a draw, return true if there are no empty positions left
 		
 		// Iterate over each cell
 		for(int row = 0; row < GameMain.ROWS; row++) {
 			for(int col = 0; col < GameMain.COLS; col++) {
 				// Check if cell is empty
 				if(cells[row][col].content == Player.Empty) {
-					// Return false if there is an empty cell
+					// Return false if there is an empty cell and therefore not a draw
 					return false;
 				}
 			}
-		} // Return true if all cells are full (draw) 
+		} // Return true if no empty positions and therefore a draw
 		return true;
 	}
 	
@@ -71,19 +69,20 @@ public class Board {
 	 * Cells to paint themselves into the grid
 	 */
 	public void paint(Graphics g) {
-		//draw the grid
+		// Draw the grid
 		g.setColor(Color.gray);
+		// Draw the rows
 		for (int row = 1; row < GameMain.ROWS; ++row) {          
 			g.fillRoundRect(0, GameMain.CELL_SIZE * row - GRID_WIDHT_HALF,                
 					GameMain.CANVAS_WIDTH - 1, GRID_WIDTH,                
 					GRID_WIDTH, GRID_WIDTH);       
 			}
+		// Draw the columns
 		for (int col = 1; col < GameMain.COLS; ++col) {          
 			g.fillRoundRect(GameMain.CELL_SIZE * col - GRID_WIDHT_HALF, 0,                
 					GRID_WIDTH, GameMain.CANVAS_HEIGHT - 1,                
 					GRID_WIDTH, GRID_WIDTH);
 		}
-		
 		//Draw the cells
 		for (int row = 0; row < GameMain.ROWS; ++row) {          
 			for (int col = 0; col < GameMain.COLS; ++col) {  
@@ -91,6 +90,4 @@ public class Board {
 			}
 		}
 	}
-	
-
 }

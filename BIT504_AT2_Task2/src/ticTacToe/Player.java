@@ -7,5 +7,6 @@ package ticTacToe;
 public enum Player {
 	Empty, 
 	Cross, 
-	Nought
+	Nought,
+	Content
 }

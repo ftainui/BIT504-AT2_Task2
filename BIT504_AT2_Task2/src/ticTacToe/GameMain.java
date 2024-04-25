@@ -9,11 +9,14 @@ public class GameMain extends JPanel implements MouseListener{
 	public static final int ROWS = 3;     
 	public static final int COLS = 3;  
 	public static final String TITLE = "Tic Tac Toe";
+	
 	// Constants for dimensions used for drawing cell width and height
 	public static final int CELL_SIZE = 100;
+	
 	// Drawing canvas
 	public static final int CANVAS_WIDTH = CELL_SIZE * COLS;
 	public static final int CANVAS_HEIGHT = CELL_SIZE * ROWS;
+	
 	// Noughts and Crosses are displayed inside a cell, with padding from border
 	public static final int CELL_PADDING = CELL_SIZE / 6;    
 	public static final int SYMBOL_SIZE = CELL_SIZE - CELL_PADDING * 2;    
@@ -58,7 +61,7 @@ public class GameMain extends JPanel implements MouseListener{
 	}
 	
 	public static void main(String[] args) {
-		    // Run GUI code in Event Dispatch thread for thread safety.
+		// Run GUI code in Event Dispatch thread for thread safety.
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 	         public void run() {
 				//create a main window to contain the panel
@@ -158,16 +161,20 @@ public class GameMain extends JPanel implements MouseListener{
 	public void mouseClicked(MouseEvent e) {  
 	    // get the coordinates of where the click event happened            
 		int mouseX = e.getX();             
-		int mouseY = e.getY();             
+		int mouseY = e.getY();        
+		
 		// Get the row and column clicked             
 		int rowSelected = mouseY / CELL_SIZE;             
-		int colSelected = mouseX / CELL_SIZE;               			
+		int colSelected = mouseX / CELL_SIZE; 
+		
 		if (currentState == GameState.Playing) {                
 			if (rowSelected >= 0 && rowSelected < ROWS && colSelected >= 0 && colSelected < COLS && board.cells[rowSelected][colSelected].content == Player.Empty) {
 				// move  
 				board.cells[rowSelected][colSelected].content = currentPlayer; 
+				
 				// update currentState                  
 				updateGame(currentPlayer, rowSelected, colSelected); 
+				
 				// Switch player
 				if (currentPlayer == Player.Cross) {
 					currentPlayer =  Player.Nought;

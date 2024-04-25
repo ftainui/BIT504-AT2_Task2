@@ -31,6 +31,7 @@ public class Cell {
 		//draw the symbol in the position
 		int x1 = col * GameMain.CELL_SIZE + GameMain.CELL_PADDING;
 		int y1 = row * GameMain.CELL_SIZE + GameMain.CELL_PADDING;
+		
 		// determine if the symbol is "X" or "O" before drawing
 		if (content == Player.Cross) {
 			graphic2D.setColor(Color.RED);
